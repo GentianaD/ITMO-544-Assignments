@@ -15,7 +15,7 @@ autoScalingGroupArray=($autoScalingGroupNames)
 for i in ${autoScalingGroupArray[@]};
 do 
 #Detach load-balancers from autoscaling group
- loadBalancerNamesPerAutoScalingGr=$(aws autoscaling describe-auto-scaling-groups --query "AutoScalingGroups[?AutoScalingGroupName=='$i'].LoadBalancerNames");
+ loadBalancerNamesPerAutoScalingGr=$(aws autoscaling describe-auto-scaling-groups --query "AutoScalingGroups[?AutoScalingGroupName=='$i'].LoadBalancerNames[*]");
 echo "Detach load-balancers from autoscaling group:  $i";
 aws autoscaling detach-load-balancers --load-balancer-names $loadBalancerNamesPerAutoScalingGr --auto-scaling-group-name $i;
 #Delete auto-scaling-group 
