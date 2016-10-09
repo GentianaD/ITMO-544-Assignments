@@ -63,4 +63,4 @@ launchedInstanceIds="$(aws ec2 describe-instances --query 'Reservations[*].Insta
 echo "Instances  $launchedInstanceIds"
 aws ec2 terminate-instances --instance-ids $launchedInstanceIds
 
-
+echo "destroy-env.sh script finished execution!"

@@ -6,4 +6,7 @@ aws elb create-load-balancer --load-balancer-name $loadBalancerName --listeners 
 launchConfigurationName='webserver-config'
 aws autoscaling create-launch-configuration --launch-configuration-name $launchConfigurationName --image-id $1 --key-name devenv-key --instance-type t2.micro --user-data file://installapp.sh 
 autoScalingGroupName='my-autoscaling-webserver'
+
 aws autoscaling create-auto-scaling-group --auto-scaling-group-name $autoScalingGroupName --launch-configuration-name $launchConfigurationName --availability-zones "us-west-2b" --load-balancer-name $loadBalancerName --max-size 5 --min-size 2 --desired-capacity 4
+
+echo "create-env.sh script finished execution!"
