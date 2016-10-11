@@ -1,5 +1,5 @@
 #!/bin/bash
-if [$#<5]
+if (($#<5));
  then
  echo "You need to provide 5 parameters: ami-id key-name security-group launch-configuration count "
 else
